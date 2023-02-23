@@ -7,7 +7,9 @@ class Program
     public static void Main(string[] args)
     {
         Card testCard = new Card("Dalgaard", "2 shots");
-
-        Console.WriteLine(testCard.target);
+        for (int i = 0; i  < Phrases.AmountOfPhrases; i++)
+        {
+            Phrases.GetPhrase();
+        }
     }
 }

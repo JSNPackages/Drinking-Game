@@ -1,30 +1,55 @@
 namespace Drinking_Game.Utilities;
 
+public class Phrase
+{
+    public string Characteristic { get; set; }
+    public string StandardPhrase { get; set; }
+
+    public Phrase(string characteristic)
+    {
+        this.Characteristic = characteristic;
+        this.StandardPhrase = $"The {this.Characteristic} in the room";
+    }
+}
+
 public static class Phrases
 {
-    private static Random _random = new Random();
-    private static Func<string, string> TITH = (string characteristic) => $"The {characteristic} in the room";
-    private static string[] _phrases = new []
+    private static readonly Random _random = new();
+    private static readonly List<Phrase> _phrases = new []
     {
-            TITH("tallest"),
-            TITH("shortest"),
-            TITH("oldest"),
-            TITH("youngest"),
-            TITH("most drunk person"),
-            TITH("least drunk person"),
-            TITH("funniest"),
-            TITH("most drunk person"),
-            TITH("most drunk person"),
-            TITH("most drunk person"),
-    }.OrderBy<string, int>(x => _random.Next()).ToArray();
+        new Phrase("tallest"),
+        new Phrase("shortest"),
+        new Phrase("oldest"),
+        new Phrase("youngest"),
+        new Phrase("most drunk person"),
+        new Phrase("least drunk person"),
+        new Phrase("funniest"),
+        new Phrase("least funny"),
+    }.OrderBy(_ => _random.Next()).ToList();
+
+    public static int AmountOfPhrases = _phrases.ToArray().Length;
 
     /**
      * @returns: stirng - Random phrase/criteria
      */
-    public static IEnumerable<string> GetPhrase()
+    public static IEnumerable<Phrase> GetPhrase()
     {
-        string[] toReturn = _phrases.OrderBy(x => _random.Next()).ToArray();
+        /*    foreach (string currentPhrase in _phrases) {
+            string[] usersMayDecide =
+            {
+                "funniest",
+                    "most drunk person",
+                    "least drunk person",
+                    "least funny",
+            };
 
-        yield return toReturn;
+            string wordToSearch = currentPhrase.Split(" ")[1];
+         /*   if (usersMayDecide.Contains(wordToSearch))
+            {
+                currentPhrase.Append<>(" - you decide who it is!");
+            }
+            yield return currentPhrase;*/
+
+        foreach (Phrase phrase in _phrases) yield return phrase;
     }
 }
