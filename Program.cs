@@ -1,7 +1,6 @@
-﻿using System;
-using static DrinkingGame.Card;
+﻿using Drinking_Game.Utilities;
 
-namespace DrinkingGame;
+namespace Drinking_Game;
 
 class Program
 {

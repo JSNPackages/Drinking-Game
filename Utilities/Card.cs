@@ -1,6 +1,4 @@
-using System;
-
-namespace DrinkingGame;
+namespace Drinking_Game.Utilities;
 
 public class Card {
     // Person to do the dare
