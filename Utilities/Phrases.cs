@@ -27,29 +27,10 @@ public static class Phrases
         new Phrase("least funny"),
     }.OrderBy(_ => _random.Next()).ToList();
 
-    public static int AmountOfPhrases = _phrases.ToArray().Length;
+    public static int AmountOfPhrases = _phrases.Count;
 
-    /**
-     * @returns: stirng - Random phrase/criteria
-     */
-    public static IEnumerable<Phrase> GetPhrase()
+    public static void PopulateList(List<Phrase> list)
     {
-        /*    foreach (string currentPhrase in _phrases) {
-            string[] usersMayDecide =
-            {
-                "funniest",
-                    "most drunk person",
-                    "least drunk person",
-                    "least funny",
-            };
-
-            string wordToSearch = currentPhrase.Split(" ")[1];
-         /*   if (usersMayDecide.Contains(wordToSearch))
-            {
-                currentPhrase.Append<>(" - you decide who it is!");
-            }
-            yield return currentPhrase;*/
-
-        foreach (Phrase phrase in _phrases) yield return phrase;
+        foreach (Phrase phrase in _phrases) list.Add(phrase);
     }
 }

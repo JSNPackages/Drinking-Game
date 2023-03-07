@@ -1,15 +1,14 @@
-﻿using Drinking_Game.Utilities;
+﻿namespace Drinking_Game;
 
-namespace Drinking_Game;
+using Utilities;
 
 class Program
 {
     public static void Main(string[] args)
     {
-        Card testCard = new Card("Dalgaard", "2 shots");
-        for (int i = 0; i  < Phrases.AmountOfPhrases; i++)
+        foreach (Phrase phrase in Storage.phrases)
         {
-            Phrases.GetPhrase();
+            Console.WriteLine(phrase.StandardPhrase);
         }
     }
 }
